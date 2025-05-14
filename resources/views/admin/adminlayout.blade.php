@@ -17,7 +17,7 @@
   <div class="container-fluid">
    
   <div>
-    <a href="{{ route('public.home') }}"><img src="https://template-kit.evonicmedia.com/layout69/wp-content/uploads/2023/05/Logo-3.png" class="navbar-brand" width="150px" alt=""></a>
+    <a href= "{{ route('public.home') }}"><img src="https://template-kit.evonicmedia.com/layout69/wp-content/uploads/2023/05/Logo-3.png" class="navbar-brand" width="150px" alt=""></a>
     
     </div>
 
@@ -30,32 +30,20 @@
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 d-flex align-items-center gap-3">
 
-        <li class="nav-item">
-          <a class="nav-link active fw-semibold text-dark" aria-current="page" href="{{ route('public.home') }}">
-            Home
-          </a>
-        </li>
-
-       @guest
-       <li class="nav-item">
-          <a class="nav-link fw-semibold text-dark" href="{{ route("login") }}">
-            Student Login
-          </a>
-        </li>
-
-        <li class="nav-item">
-          <a class="btn btn-outline-success px-4 py-2 rounded-pill fw-semibold" href="{{ route('public.apply') }}">
-            Apply for Admission
-          </a>
-        </li>
-       @endguest
-
        @auth
+       <li class="nav-item">
+          <a class="btn btn-outline-danger px-4 py-2 rounded-pill fw-semibold" href="">
+            Hi, I {{auth()->user()->name  }}
+          </a>
+        </li>
        <li class="nav-item">
           <a class="btn btn-outline-success px-4 py-2 rounded-pill fw-semibold" href="{{ route('public.logout') }}">
           <i class="bi bi-box-arrow-right"></i> Logout
           </a>
         </li>
+        
+        
+
        @endauth
 
       </ul>

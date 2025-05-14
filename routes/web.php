@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CourseController;
 use App\Http\Controllers\PublicController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -18,6 +21,18 @@ Route::middleware("auth")->group(function(){
         Route::prefix("student")->group(function(){
            Route::get("/","dashboard")->name("students.dashboard");
         });
+   });
+
+   Route::controller(AdminController::class)->group(function(){
+    
+    Route::prefix("admin")->group(function(){
+          Route::get("/","dashboard")->name("admin.dashboard");
+          Route::get("/admission","manageadmission")->name("admin.manageadmission");
+          Route::get("/admission/{user}/approve","studentapprove")->name("admin.studentapprove");
+          Route::get("/students","managestudent")->name("admin.managestudent");
+          Route::resource("categories",CategoryController::class)->except('show');
+          Route::resource("course",CourseController::class);
+    });
    });
 });
 
